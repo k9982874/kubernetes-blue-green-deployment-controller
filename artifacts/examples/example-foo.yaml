@@ -1,0 +1,13 @@
+apiVersion: controller.k8s.kexinlife.com/v1alpha1
+kind: BlueGreenDeployment
+metadata:
+  name: blue-green-deployment
+spec:
+  replicas: 1 # determine number of pods for both Blue and Green ReplicaSets
+  podSpec:
+    containers:
+    - name: nginx-hello-world
+      image: dockerbogo/docker-nginx-hello-world
+      ports:
+      - containerPort: 80
+        hostPort: 9090
